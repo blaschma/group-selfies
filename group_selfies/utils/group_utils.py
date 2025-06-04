@@ -101,6 +101,8 @@ def to_smarts(s): #assume s is verified already
     #2. wildcard in middle (e.g. C(*1)C)
     #3. wildcard at end (e.g. C*1)
     L = inclusive.split(s)
+    if len(L) == 1:
+        return s
     symbs = ['-', '=', '#']
 
     def process_delim(sep, reverse=False):

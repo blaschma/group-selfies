@@ -69,6 +69,12 @@ class GroupGrammar:
         return cls(vocab=vocab_dict)
 
     @classmethod
+    def from_raw_file(cls, filename):
+        test_gs = [l.strip().split(' ') for l in open(filename)]
+        vocab_dict = dict([(n, Group(n, s, priority=int(priority[0]) if len(priority) else 0, all_attachment = True)) for n, s, *priority in test_gs])
+        return cls(vocab=vocab_dict)
+
+    @classmethod
     def essential_set(cls):
         global cached_essential
         if cached_essential:
